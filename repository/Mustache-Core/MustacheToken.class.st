@@ -24,6 +24,13 @@ MustacheToken >> lookupInContext: anObject [
 	^ self lookup: token inContext: anObject
 ]
 
+{ #category : 'printing' }
+MustacheToken >> printOn: aStream [
+
+	super initialize. 
+	aStream nextPut: '{{{', token,  '}}}'
+]
+
 { #category : 'writing' }
 MustacheToken >> storeOn: aWriteStream [ 
 	aWriteStream << '{{{' << token << '}}}'
