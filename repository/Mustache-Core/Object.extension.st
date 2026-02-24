@@ -30,11 +30,13 @@ Object >> mustacheLookup: aString [
 
 { #category : '*mustache-core' }
 Object >> mustacheLookupComplex: aString [
+	"Lookup inside the path denoted by . or send the mustacheDefaultWhenLookupFails: error hook."
+	
 	| stream firstPart |
 	stream := aString readStream.
 	firstPart := stream upTo: $. .
 	^ stream atEnd
-		ifTrue: [ self mustacheDefaultWhenLookupFails ]
+		ifTrue: [ self mustacheDefaultWhenLookupFails: aString  ]
 		ifFalse: [ (self mustacheLookup: firstPart) mustacheLookup: stream upToEnd ]
 ]
 
